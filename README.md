@@ -1,73 +1,184 @@
-# Welcome to your Lovable project
+# 🎉 UniVents – Event Management System
 
-## Project info
+UniVents is a full-stack Event Management System (EMS) built as a campus marketplace-style platform where students, organizers, and administrators can discover, create, manage, and participate in events.
 
-**URL**: https://lovable.dev/projects/0bd42802-e287-42e8-a339-42f60f629734
+It is designed with modern UI/UX, role-based access, and a scalable architecture that supports event discovery, moderation, registration, and notifications.
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Role-based Access Control (RBAC)**: Admin, Organizer, Participant
+- **Dashboards**: Role-specific dashboards with KPIs and event summaries
+- **Event Lifecycle**: Create → Draft → Submit for Approval → Approved/Rejected → Archived
+- **Event Discovery**: Search, filters, categories, and recommendations
+- **Registration System**: Capacity management, join/cancel, attendance tracking
+- **Moderation**: Admin event approval/rejection with audit logs
+- **User Management**: Roles, status updates, suspensions/reactivations
+- **Notifications**: In-app + email templates, announcements, reminders
+- **Profile & Settings**: Personal info, preferences, dark/light mode
+- **Responsive & Accessible**: Mobile-first, WCAG AA ready
+- **Seed Data**: Preloaded users, events, categories, venues, and registrations
 
-**Use Lovable**
+## 🛠️ Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0bd42802-e287-42e8-a339-42f60f629734) and start prompting.
+**Frontend**
+- React + Vite + TypeScript
+- Tailwind CSS v4 with shadcn/ui
+- Framer Motion for animations
+- React Router v6 for navigation
 
-Changes made via Lovable will be committed automatically to this repo.
+**Backend**
+- Node.js + Express.js
+- Prisma ORM with SQLite (dev) / PostgreSQL (prod)
+- JWT Authentication with role-based guards
+- REST API Endpoints for users, events, registrations, notifications
 
-**Use your preferred IDE**
+**Other**
+- ESLint + Prettier for code quality
+- dotenv for environment configuration
+- Jest (optional) for tests
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📂 Project Structure
+univents/
+├── client/                  # Frontend (React + Vite)
+│   ├── src/components/      # UI Components
+│   ├── src/pages/           # Role-based Pages
+│   ├── src/routes/          # App routing
+│   └── src/styles/          # Tailwind config
+│
+├── server/                  # Backend (Express + Prisma)
+│   ├── src/controllers/     # Request handlers
+│   ├── src/routes/          # API routes
+│   ├── src/middleware/      # Auth & validation
+│   ├── src/prisma/          # Prisma schema & migrations
+│   └── src/utils/           # Helpers
+│
+├── prisma/                  # Database schema & seed script
+│   ├── schema.prisma
+│   └── seed.ts
+│
+├── .env.example             # Env variables
+├── README.md
+└── package.json
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+## 🔑 User Roles & Permissions
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+| Role | Permissions |
+|------|-------------|
+| **Admin** | Full access, manage users, approve/reject events, send announcements, settings |
+| **Organizer** | Create/manage events, track registrations, view analytics |
+| **Participant** | Discover events, register/cancel, track history in My Events |
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📜 API Endpoints
 
-# Step 3: Install the necessary dependencies.
-npm i
+**Auth**
+- `POST /auth/signup` – Register user
+- `POST /auth/login` – Authenticate and receive JWT
+- `POST /auth/forgot-password` – Password reset flow
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+**Events**
+- `GET /events` – List approved events (filters, search, pagination)
+- `POST /events` – Create new event (Organizer only)
+- `PATCH /events/:id` – Update event (Owner/Admin)
+- `GET /events/:slug` – Event detail page
+
+**Moderation (Admin)**
+- `GET /moderation/events` – List pending events
+- `PATCH /moderation/events/:id` – Approve/reject event
+
+**Registrations**
+- `POST /registrations` – Register for event
+- `DELETE /registrations/:id` – Cancel registration
+- `GET /registrations/event/:id` – Organizer/Admin view registrations
+
+**Notifications**
+- `POST /notifications` – Create announcement/template
+- `GET /notifications` – Fetch user notifications
+
+## ⚙️ Setup & Installation
+
+### Prerequisites
+- Node.js (>=18)
+- npm or yarn
+- PostgreSQL (for production)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/univents.git
+cd univents
+
+### 2. Install dependencies
+# Install backend
+cd server
+npm install
+
+# Install frontend
+cd ../client
+npm install
+
+###3. 3. Environment Variables
+Create a .env file in server/ based on .env.example:
+DATABASE_URL="postgresql://user:password@localhost:5432/univents"
+JWT_SECRET="your_secret_key"
+
+### 4. Database Setup
+bash
+cd server
+npx prisma migrate dev
+npx prisma db seed
+
+
+### 5. Run the App
+bash
+# Start backend
+cd server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+# Start frontend
+cd ../client
+npm run dev
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+App will be available at:
 
-**Use GitHub Codespaces**
+Frontend: http://localhost:5173
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Backend: http://localhost:5000
 
-## What technologies are used for this project?
+🌱 Seed Data
+The seed script creates:
 
-This project is built with:
+1 Admin, 2 Organizers, 5 Participants
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+8 Categories, 4 Venues
 
-## How can I deploy this project?
+12 Events (draft, pending, approved, archived)
 
-Simply open [Lovable](https://lovable.dev/projects/0bd42802-e287-42e8-a339-42f60f629734) and click on Share -> Publish.
+40+ Registrations
 
-## Can I connect a custom domain to my Lovable project?
+3 Notification templates
 
-Yes, you can!
+Test Credentials:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Admin: admin@univents.com / admin123
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Organizer: organizer1@univents.com / org123
+
+Participant: user1@univents.com / user123
+
+📊 Future Enhancements
+Payment integration for ticketed events
+
+Analytics dashboard with charts
+
+Multi-language support (i18n)
+
+Live chat / event Q&A
+
+Calendar sync (Google/Outlook)
+
+🤝 Contributing
+Contributions are welcome! Please fork the repo and submit a pull request.
+
+📜 License
+MIT License © 2025 UniVents
+
