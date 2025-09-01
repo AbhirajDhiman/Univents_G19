@@ -1,235 +1,161 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Users, Star, Search, Sparkles, Zap, Shield } from "lucide-react";
+import { ArrowRight, ChevronRight, Play, Calendar, Users, Shield, Zap, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Landing() {
-  const featuredEvents = [
-    {
-      id: 1,
-      title: "Tech Innovation Summit 2024",
-      description: "Join industry leaders for a day of innovation and networking",
-      date: "Dec 15, 2024",
-      time: "9:00 AM",
-      location: "San Francisco, CA",
-      attendees: 250,
-      category: "Technology",
-      image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop",
-      organizer: "TechCorp Events"
-    },
-    {
-      id: 2,
-      title: "Creative Design Workshop",
-      description: "Learn modern design principles from expert designers",
-      date: "Dec 18, 2024",
-      time: "2:00 PM",
-      location: "Online",
-      attendees: 85,
-      category: "Design",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=240&fit=crop",
-      organizer: "Design Academy"
-    },
-    {
-      id: 3,
-      title: "Startup Pitch Competition",
-      description: "Watch promising startups pitch to top investors",
-      date: "Dec 20, 2024",
-      time: "6:00 PM",
-      location: "New York, NY",
-      attendees: 180,
-      category: "Business",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=240&fit=crop",
-      organizer: "StartupHub"
-    }
-  ];
-
   const features = [
     {
-      icon: Calendar,
-      title: "Easy Event Creation",
-      description: "Create and manage events with our intuitive multi-step wizard"
+      title: "Intelligent Discovery",
+      description: "AI-powered event recommendations tailored to your preferences and location."
     },
     {
-      icon: Users,
-      title: "Smart Discovery",
-      description: "Find events that match your interests with AI-powered recommendations"
+      title: "Seamless Creation", 
+      description: "Sophisticated tools that make event planning effortless and professional."
     },
     {
-      icon: Shield,
-      title: "Secure Registration",
-      description: "Safe and secure event registration with instant confirmation"
+      title: "Trusted Security",
+      description: "Enterprise-grade security ensuring your events and data remain protected."
     },
     {
-      icon: Zap,
-      title: "Real-time Updates",
-      description: "Get instant notifications about events you care about"
+      title: "Real-time Analytics",
+      description: "Comprehensive insights to optimize your events and engage your audience."
     }
   ];
 
   const stats = [
-    { label: "Events Created", value: "2,500+" },
-    { label: "Happy Attendees", value: "50,000+" },
-    { label: "Event Organizers", value: "800+" },
-    { label: "Cities Covered", value: "120+" }
+    { value: "10K+", label: "Events Hosted" },
+    { value: "500K+", label: "Attendees" },
+    { value: "2K+", label: "Organizers" },
+    { value: "50+", label: "Cities" }
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navigation */}
-      <header className="sticky top-0 z-50 w-full border-b glass">
-        <div className="container flex h-16 items-center justify-between px-4">
-          <div className="flex items-center space-x-2">
-            <div className="h-8 w-8 gradient-primary rounded-lg flex items-center justify-center">
-              <Calendar className="h-5 w-5 text-white" />
+    <div className="min-h-screen bg-background">
+      {/* Minimalist Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Calendar className="w-4 h-4 text-primary-foreground" />
+              </div>
+              <span className="text-lg font-semibold text-foreground">EventFlow</span>
             </div>
-            <span className="text-xl font-bold text-gradient">EventFlow</span>
-          </div>
 
-          <div className="flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="ghost">Sign In</Button>
-            </Link>
-            <Link to="/signup">
-              <Button className="gradient-primary text-white hover:opacity-90">
-                Get Started
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-micro letter-spacing-hover">
+                Features
+              </a>
+              <a href="#discover" className="text-sm text-muted-foreground hover:text-foreground transition-micro letter-spacing-hover">
+                Discover
+              </a>
+              <a href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-micro letter-spacing-hover">
+                Pricing
+              </a>
+            </div>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-hero text-white">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative container mx-auto px-4 py-24 text-center">
-          <div className="mx-auto max-w-4xl">
-            <Badge className="mb-6 bg-white/20 text-white border-white/30 hover:bg-white/30">
-              <Sparkles className="mr-1 h-3 w-3" />
-              Discover Amazing Events Near You
-            </Badge>
-            
-            <h1 className="mb-6 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-              Where Great Events
-              <span className="block text-primary-glow">Come to Life</span>
-            </h1>
-            
-            <p className="mb-8 text-xl text-white/90 sm:text-2xl max-w-2xl mx-auto">
-              Join thousands of event organizers and attendees who trust EventFlow 
-              to create unforgettable experiences.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/discover">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-primary">
-                  <Search className="mr-2 h-5 w-5" />
-                  Explore Events
+            {/* Auth Buttons */}
+            <div className="flex items-center space-x-4">
+              <Link to="/login">
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                  Sign In
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                  Create Account
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary">
+                  Get Started
                 </Button>
               </Link>
             </div>
           </div>
         </div>
-      </section>
+      </nav>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl">
+            {/* Badge */}
+            <div className="inline-flex items-center space-x-2 bg-muted px-4 py-2 rounded-full text-sm text-muted-foreground mb-8">
+              <div className="w-2 h-2 bg-accent rounded-full"></div>
+              <span>Introducing the future of event management</span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-6xl md:text-8xl font-semibold text-foreground mb-8 tracking-tight leading-none">
+              A New
+              <br />
+              <span className="text-gradient">Generation</span>
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl leading-relaxed">
+              Experience event management reimagined for the modern world. 
+              Where sophisticated design meets intelligent functionality.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6 mb-20">
+              <Link to="/discover">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary px-8 py-6 text-base">
+                  Explore Events
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button size="lg" variant="outline" className="border-border hover:bg-muted px-8 py-6 text-base group">
+                  Watch Demo
+                  <Play className="ml-2 w-4 h-4 group-hover:scale-110 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-32">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-semibold text-foreground mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wide">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Events */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Events</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Discover upcoming events that are trending in your area
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {featuredEvents.map((event) => (
-              <Card key={event.id} className="hover-lift transition-smooth overflow-hidden gradient-card border-0">
-                <div className="aspect-video relative overflow-hidden">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <Badge className="absolute top-3 left-3 bg-primary/90 text-white">
-                    {event.category}
-                  </Badge>
-                </div>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg line-clamp-2">{event.title}</CardTitle>
-                  <CardDescription className="line-clamp-2">{event.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    {event.date} at {event.time}
-                  </div>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Users className="mr-2 h-4 w-4" />
-                    {event.attendees} attending
-                  </div>
-                  <div className="flex items-center justify-between pt-2">
-                    <span className="text-sm font-medium">by {event.organizer}</span>
-                    <Button size="sm" className="gradient-primary text-white">
-                      View Details
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link to="/discover">
-              <Button size="lg" variant="outline" className="group">
-                View All Events
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Abstract Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-32"></div>
 
       {/* Features Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Why Choose EventFlow?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to create, discover, and manage amazing events
+      <section id="features" className="px-6 mb-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-4xl md:text-5xl font-semibold text-foreground mb-6 tracking-tight">
+              Built for the future
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Every detail crafted with precision. Every interaction designed for excellence. 
+              This is how event management should feel.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center hover-lift transition-smooth gradient-card border-0">
-                <CardHeader>
-                  <div className="mx-auto h-12 w-12 gradient-primary rounded-lg flex items-center justify-center mb-4">
-                    <feature.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center">{feature.description}</CardDescription>
+              <Card key={index} className="border-border/50 bg-card hover:bg-muted/30 hover:shadow-soft transition-all duration-300 p-8">
+                <CardContent className="p-0">
+                  <h3 className="text-lg font-semibold text-foreground mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    {feature.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -238,40 +164,90 @@ export default function Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Join thousands of event creators and attendees who trust EventFlow
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/signup">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-primary">
-                <Star className="mr-2 h-5 w-5" />
-                Create Account
-              </Button>
-            </Link>
-            <Link to="/discover">
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                Browse Events
-              </Button>
-            </Link>
-          </div>
+      <section className="px-6 mb-32">
+        <div className="max-w-7xl mx-auto">
+          <Card className="bg-primary text-primary-foreground border-0 p-16 text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6 tracking-tight">
+              Ready to elevate your events?
+            </h2>
+            <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
+              Join thousands of organizers who trust EventFlow to create exceptional experiences.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <Link to="/signup">
+                <Button size="lg" variant="secondary" className="bg-background text-foreground hover:bg-muted px-8 py-6">
+                  Start Free Trial
+                  <ChevronRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+              <Link to="/discover">
+                <Button size="lg" variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6">
+                  Browse Events
+                </Button>
+              </Link>
+            </div>
+          </Card>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="h-6 w-6 gradient-primary rounded-md flex items-center justify-center">
-                <Calendar className="h-4 w-4 text-white" />
+      <footer className="border-t border-border/50 px-6 py-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+            {/* Logo & Description */}
+            <div className="max-w-md">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Calendar className="w-4 h-4 text-primary-foreground" />
+                </div>
+                <span className="text-lg font-semibold text-foreground">EventFlow</span>
               </div>
-              <span className="font-bold text-gradient">EventFlow</span>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The sophisticated platform for modern event management. 
+                Designed for the next generation of organizers.
+              </p>
             </div>
-            <div className="text-sm text-muted-foreground">
-              © 2024 EventFlow. All rights reserved.
+
+            {/* Links */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
+              <div>
+                <h4 className="font-medium text-foreground mb-3">Product</h4>
+                <div className="space-y-2">
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Features</a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Pricing</a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Security</a>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-foreground mb-3">Company</h4>
+                <div className="space-y-2">
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">About</a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Blog</a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Careers</a>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-foreground mb-3">Support</h4>
+                <div className="space-y-2">
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Help</a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Contact</a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-micro accent-underline">Status</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="border-t border-border/50 mt-12 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <p className="text-sm text-muted-foreground">
+                © 2024 EventFlow. All rights reserved.
+              </p>
+              <div className="flex items-center space-x-6 text-sm">
+                <a href="#" className="text-muted-foreground hover:text-foreground transition-micro">Privacy</a>
+                <a href="#" className="text-muted-foreground hover:text-foreground transition-micro">Terms</a>
+                <a href="#" className="text-muted-foreground hover:text-foreground transition-micro">Cookies</a>
+              </div>
             </div>
           </div>
         </div>
