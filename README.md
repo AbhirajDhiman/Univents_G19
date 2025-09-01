@@ -39,26 +39,40 @@ It is designed with modern UI/UX, role-based access, and a scalable architecture
 
 ## 📂 Project Structure
 univents/
-├── client/                  # Frontend (React + Vite)
-│   ├── src/components/      # UI Components
-│   ├── src/pages/           # Role-based Pages
-│   ├── src/routes/          # App routing
-│   └── src/styles/          # Tailwind config
+├── client/                  # Frontend (React + Vite + TS)
+│   ├── src/
+│   │   ├── components/      # UI components (e.g., buttons, cards)
+│   │   ├── pages/           # Role-based pages (e.g., Admin, Organizer, Participant)
+│   │   ├── routes/          # React Router v6 route definitions
+│   │   └── styles/          # Tailwind CSS config & shadcn/ui styles
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.ts
+│   ├── tsconfig.app.json
+│   └── tailwind.config.ts
 │
-├── server/                  # Backend (Express + Prisma)
-│   ├── src/controllers/     # Request handlers
-│   ├── src/routes/          # API routes
-│   ├── src/middleware/      # Auth & validation
-│   ├── src/prisma/          # Prisma schema & migrations
-│   └── src/utils/           # Helpers
+├── server/                  # Backend (Node.js + Express + Prisma)
+│   ├── src/
+│   │   ├── controllers/     # Express request handlers
+│   │   ├── routes/          # API route definitions
+│   │   ├── middleware/      # Authentication & validation functions
+│   │   ├── prisma/          # Prisma schema & migration setup
+│   │   └── utils/           # Helper functions/utilities
+│   ├── .env.example         # Example environment variables
+│   ├── package.json
+│   └── bun.lockb            # bun package-lock file (if using bun)
 │
-├── prisma/                  # Database schema & seed script
-│   ├── schema.prisma
-│   └── seed.ts
+├── prisma/                  # Database schema & seeding
+│   ├── schema.prisma        # Prisma schema definition
+│   └── seed.ts              # Seed script to populate DB
 │
-├── .env.example             # Env variables
-├── README.md
-└── package.json
+├── .gitignore
+├── README.md                # Project overview, setup, usage
+├── components.json          # Design system config (if applicable)
+├── eslint.config.js         # Linting setup (ESLint + Prettier)
+├── postcss.config.js        # PostCSS configuration
+├── tsconfig.json            # Root TypeScript configuration
+└── package-lock.json        # npm lock file (if using npm)
 
 
 ## 🔑 User Roles & Permissions
