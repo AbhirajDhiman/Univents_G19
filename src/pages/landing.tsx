@@ -106,10 +106,9 @@ export default function Landing() {
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button size="lg" variant="outline" className="border-border hover:bg-muted px-8 py-6 text-base group">
-                  Watch Demo
+           
                   <Play className="ml-2 w-4 h-4 group-hover:scale-110 transition-transform" />
-                </Button>
+             
               </Link>
             </div>
           </div>
