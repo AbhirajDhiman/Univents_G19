@@ -69,7 +69,7 @@ export default function Settings() {
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
             <h1 className="text-4xl font-extralight mb-2 text-foreground tracking-tight">Settings</h1>
-            <p className="text-muted-foreground">Customize your EventFlow experience</p>
+            <p className="text-muted-foreground">Customize your Univents experience</p>
           </div>
 
           <Tabs defaultValue="appearance" className="w-full">
@@ -99,7 +99,7 @@ export default function Settings() {
                     <Palette className="h-5 w-5" />
                     Appearance & Display
                   </CardTitle>
-                  <CardDescription>Customize how EventFlow looks and feels</CardDescription>
+                  <CardDescription>Customize how Univents looks and feels</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-center justify-between">

@@ -41,7 +41,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="eventflow-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="Univents-theme">
       <TooltipProvider>
         <Toaster />
         <Sonner />

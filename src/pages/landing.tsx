@@ -243,7 +243,7 @@ export default function Landing() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <Calendar className="w-4 h-4 text-primary-foreground" />
               </div>
-              <span className="text-lg font-semibold text-foreground">EventFlow</span>
+              <span className="text-lg font-semibold text-foreground">Univents</span>
             </div>
 
             {/* Navigation Links */}
@@ -346,7 +346,7 @@ export default function Landing() {
               Ready to elevate your events?
             </h2>
             <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
-              Join thousands of organizers who trust EventFlow to create exceptional experiences.
+              Join thousands of organizers who trust Univents to create exceptional experiences.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link to="/signup">
@@ -375,7 +375,7 @@ export default function Landing() {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <Calendar className="w-4 h-4 text-primary-foreground" />
                 </div>
-                <span className="text-lg font-semibold text-foreground">EventFlow</span>
+                <span className="text-lg font-semibold text-foreground">Univents</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 The sophisticated platform for modern event management. 
@@ -416,7 +416,7 @@ export default function Landing() {
           <div className="border-t border-border/50 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-sm text-muted-foreground">
-                © 2024 EventFlow. All rights reserved.
+                © 2025 Univents. All rights reserved.
               </p>
               <div className="flex items-center space-x-6 text-sm">
                 <a href="#" className="text-muted-foreground hover:text-foreground transition-micro">Privacy</a>
