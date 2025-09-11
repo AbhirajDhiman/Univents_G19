@@ -41,7 +41,7 @@ export default function ForgotPassword() {
             <div className="h-10 w-10 bg-primary/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
               <Calendar className="h-6 w-6 text-primary" />
             </div>
-            <span className="text-2xl font-light tracking-wide">EventFlow</span>
+            <span className="text-2xl font-light tracking-wide">Univents</span>
           </div>
           <h1 className="text-3xl font-extralight mb-2 tracking-tight">Reset Password</h1>
           <p className="text-muted-foreground">Enter your email to receive reset instructions</p>

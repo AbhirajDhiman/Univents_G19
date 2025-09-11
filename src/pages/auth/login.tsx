@@ -44,7 +44,7 @@ export default function Login() {
             <div className="h-10 w-10 bg-white/20 rounded-lg flex items-center justify-center">
               <Calendar className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-bold">EventFlow</span>
+            <span className="text-2xl font-bold">Univents</span>
           </div>
           <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
           <p className="text-white/80">Sign in to your account to continue</p>
@@ -138,9 +138,9 @@ export default function Login() {
             <div className="mt-6 p-4 bg-muted/50 rounded-lg">
               <p className="text-sm font-medium mb-2">Demo Accounts:</p>
               <div className="space-y-1 text-xs text-muted-foreground">
-                <p>• Admin: admin@eventflow.com / admin123</p>
-                <p>• Organizer: organizer@eventflow.com / org123</p>
-                <p>• Participant: user@eventflow.com / user123</p>
+                <p>• Admin: admin@Univents.com / admin123</p>
+                <p>• Organizer: organizer@Univents.com / org123</p>
+                <p>• Participant: user@Univents.com / user123</p>
               </div>
             </div>
           </CardContent>

@@ -41,7 +41,7 @@ export default function Signup() {
       setIsLoading(false);
       toast({
         title: "Account created successfully!",
-        description: "Welcome to EventFlow. Please check your email to verify your account.",
+        description: "Welcome to Univents. Please check your email to verify your account.",
       });
       navigate("/dashboard");
     }, 2000);
@@ -62,9 +62,9 @@ export default function Signup() {
             <div className="h-10 w-10 bg-white/20 rounded-lg flex items-center justify-center">
               <Calendar className="h-6 w-6 text-white" />
             </div>
-            <span className="text-2xl font-bold">EventFlow</span>
+            <span className="text-2xl font-bold">Univents</span>
           </div>
-          <h1 className="text-3xl font-bold mb-2">Join EventFlow</h1>
+          <h1 className="text-3xl font-bold mb-2">Join Univents</h1>
           <p className="text-white/80">Create your account and start your event journey</p>
         </div>
 
