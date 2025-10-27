@@ -21,8 +21,8 @@ export default function Registrations() {
   // Mock event data
   const event = {
     id: eventId,
-    title: "AI Innovation Summit 2024",
-    date: "2024-03-15",
+    title: "AI Innovation Summit 2025",
+    date: "2025-03-15",
     capacity: 100,
     registered: 85
   };
@@ -35,7 +35,7 @@ export default function Registrations() {
       phone: "+1-555-0101",
       ticketType: "VIP",
       status: "registered",
-      registeredAt: "2024-02-15T10:30:00Z",
+      registeredAt: "2025-02-15T10:30:00Z",
       attended: false
     },
     {
@@ -45,7 +45,7 @@ export default function Registrations() {
       phone: "+1-555-0102",
       ticketType: "General",
       status: "registered",
-      registeredAt: "2024-02-16T14:20:00Z",
+      registeredAt: "2025-02-16T14:20:00Z",
       attended: true
     },
     {
@@ -55,7 +55,7 @@ export default function Registrations() {
       phone: "+1-555-0103", 
       ticketType: "Student",
       status: "cancelled",
-      registeredAt: "2024-02-14T09:15:00Z",
+      registeredAt: "2025-02-14T09:15:00Z",
       attended: false
     },
     {
@@ -65,7 +65,7 @@ export default function Registrations() {
       phone: "+1-555-0104",
       ticketType: "General", 
       status: "registered",
-      registeredAt: "2024-02-17T16:45:00Z",
+      registeredAt: "2025-02-17T16:45:00Z",
       attended: false
     }
   ];

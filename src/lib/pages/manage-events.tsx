@@ -15,11 +15,11 @@ export default function ManageEvents() {
   const events = [
     {
       id: 1,
-      title: "AI Innovation Summit 2024",
+      title: "AI Innovation Summit 2025",
       status: "approved",
       registrations: 85,
       capacity: 100,
-      date: "2024-03-15",
+      date: "2025-03-15",
       location: "Tech Center",
       category: "Technology"
     },
@@ -29,7 +29,7 @@ export default function ManageEvents() {
       status: "pending",
       registrations: 23,
       capacity: 50,
-      date: "2024-03-20",
+      date: "2025-03-20",
       location: "Online",
       category: "Arts"
     },
@@ -39,7 +39,7 @@ export default function ManageEvents() {
       status: "draft",
       registrations: 0,
       capacity: 200,
-      date: "2024-04-01",
+      date: "2025-04-01",
       location: "Innovation Hub",
       category: "Business"
     }

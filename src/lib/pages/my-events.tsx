@@ -13,8 +13,8 @@ export default function MyEvents() {
   const upcomingEvents = [
     {
       id: 1,
-      title: "AI Innovation Summit 2024",
-      date: "2024-03-15",
+      title: "AI Innovation Summit 2025",
+      date: "2025-03-15",
       time: "09:00 AM",
       location: "Tech Center Hall A",
       status: "registered",
@@ -24,7 +24,7 @@ export default function MyEvents() {
     {
       id: 2,
       title: "Creative Design Workshop",
-      date: "2024-03-20",
+      date: "2025-03-20",
       time: "02:00 PM", 
       location: "Online - Zoom",
       status: "registered",
@@ -37,7 +37,7 @@ export default function MyEvents() {
     {
       id: 3,
       title: "Startup Networking Mixer",
-      date: "2024-02-10",
+      date: "2025-02-10",
       time: "06:00 PM",
       location: "Innovation Hub",
       status: "attended",
@@ -47,7 +47,7 @@ export default function MyEvents() {
     {
       id: 4,
       title: "Web Development Bootcamp",
-      date: "2024-01-25",
+      date: "2025-01-25",
       time: "10:00 AM",
       location: "Online - Meet",
       status: "no_show",

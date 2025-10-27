@@ -253,10 +253,13 @@ export default function Landing() {
               </a>
               <a href="#discover" className="text-sm text-muted-foreground hover:text-foreground transition-micro letter-spacing-hover">
                 Discover
-              </a>
-              <a href="#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-micro letter-spacing-hover">
-                Pricing
-              </a>
+                </a>
+              <Link
+                to="/blogs"
+                className="text-sm text-muted-foreground hover:text-foreground transition-micro letter-spacing-hover"
+              >
+                Blogs
+              </Link>
             </div>
 
             {/* Auth Buttons */}

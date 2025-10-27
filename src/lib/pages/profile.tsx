@@ -34,22 +34,22 @@ export default function Profile() {
   const recentEvents = [
     {
       id: 1,
-      title: "AI Innovation Summit 2024",
-      date: "2024-03-15",
+      title: "AI Innovation Summit 2025",
+      date: "2025-03-15",
       status: "registered",
       category: "Technology"
     },
     {
       id: 2,
       title: "Startup Networking Mixer",
-      date: "2024-02-10",
+      date: "2025-02-10",
       status: "attended",
       category: "Business"
     },
     {
       id: 3,
       title: "Creative Design Workshop",
-      date: "2024-03-20",
+      date: "2025-03-20",
       status: "registered",
       category: "Arts"
     }

@@ -16,10 +16,10 @@ export default function Notifications() {
       id: 1,
       type: "event_reminder",
       title: "Event Reminder",
-      message: "AI Innovation Summit 2024 starts in 2 hours",
-      timestamp: "2024-03-15T07:00:00Z",
+      message: "AI Innovation Summit 2025 starts in 2 hours",
+      timestamp: "2025-03-15T07:00:00Z",
       read: false,
-      event: "AI Innovation Summit 2024",
+      event: "AI Innovation Summit 2025",
       icon: Calendar
     },
     {
@@ -27,7 +27,7 @@ export default function Notifications() {
       type: "registration",
       title: "Registration Confirmed",
       message: "You're registered for Creative Design Workshop",
-      timestamp: "2024-03-14T16:30:00Z",
+      timestamp: "2025-03-14T16:30:00Z",
       read: false,
       event: "Creative Design Workshop",
       icon: Check
@@ -37,7 +37,7 @@ export default function Notifications() {
       type: "announcement",
       title: "Platform Update",
       message: "New features available: Enhanced event discovery and better notifications",
-      timestamp: "2024-03-13T10:00:00Z",
+      timestamp: "2025-03-13T10:00:00Z",
       read: true,
       icon: Settings
     },
@@ -46,7 +46,7 @@ export default function Notifications() {
       type: "event_update",
       title: "Event Location Changed",
       message: "Startup Networking Event venue has been updated",
-      timestamp: "2024-03-12T14:20:00Z",
+      timestamp: "2025-03-12T14:20:00Z",
       read: true,
       event: "Startup Networking Event",
       icon: Users
@@ -56,7 +56,7 @@ export default function Notifications() {
       type: "featured",
       title: "Featured Event",
       message: "Check out this week's featured event: Tech Leadership Summit",
-      timestamp: "2024-03-11T09:00:00Z",
+      timestamp: "2025-03-11T09:00:00Z",
       read: true,
       event: "Tech Leadership Summit",
       icon: Star
