@@ -7,8 +7,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { SignIn, SignUp, useUser } from "@clerk/clerk-react";
 
-
-
 // Pages
 import Landing from "./lib/pages/landing";
 import Discover from "./lib/pages/discover";
@@ -28,6 +26,7 @@ import AdminModeration from "./lib/pages/admin/moderation";
 import AdminSettings from "./lib/pages/admin/settings";
 import NotFound from "./lib/pages/NotFound";
 import Blogs from "./lib/pages/Blogs";
+import { HeroScrollDemo } from './components/HeroScrollDemo'; // ← Keep this import
 
 
 const queryClient = new QueryClient();
@@ -91,8 +90,18 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* Public Landing Page */}
+            {/* Public Landing Page - Now with HeroScrollDemo */}
             <Route path="/" element={<Landing />} />
+            
+            {/* NEW: Demo route to see the scroll animation */}
+            <Route 
+              path="/demo" 
+              element={
+                <div className="min-h-screen bg-background">
+                  <HeroScrollDemo />
+                </div>
+              } 
+            />
             
             {/* Auth Routes - Clerk Components with Google OAuth only */}
             <Route 
@@ -170,18 +179,18 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
+            
             {/* Public Blog Page */}
-              <Route 
-                path="/blogs" 
-                element={
-                  <ProtectedRoute>
-                    <DashboardLayout>
-                      <Blogs />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                } 
-              />
-
+            <Route 
+              path="/blogs" 
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout>
+                    <Blogs />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              } 
+            />
 
             <Route 
               path="/event/:id" 

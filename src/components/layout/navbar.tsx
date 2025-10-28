@@ -5,18 +5,23 @@ import { Bell, Plus } from 'lucide-react';
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { user } = useUser();
+  const { isSignedIn } = useUser();
 
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/discover" className="flex items-center space-x-2">
+          {/* Logo - Click to go home */}
+          <Link 
+            to={isSignedIn ? "/discover" : "/"} 
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Univents
             </span>
           </Link>
 
+          {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">
             <Link 
               to="/discover" 
@@ -38,6 +43,7 @@ export const Navbar = () => {
             </Link>
           </div>
 
+          {/* Action Buttons */}
           <div className="flex items-center space-x-4">
             <Button
               variant="default"

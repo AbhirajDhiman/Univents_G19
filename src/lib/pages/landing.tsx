@@ -354,7 +354,7 @@ export default function Landing() {
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link to="/signup">
                 <Button size="lg" variant="secondary" className="bg-background text-foreground hover:bg-muted px-8 py-6">
-                  Start Free Trial
+                  Start 
                   <ChevronRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
