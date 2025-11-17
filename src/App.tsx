@@ -28,6 +28,7 @@ import NotFound from "./lib/pages/NotFound";
 import Blogs from "./lib/pages/Blogs";
 import about from "./components/layout/about";
 import FAQ from "./components/layout/faq";
+import HelpPage from "./components/layout/HelpPage";
 import { HeroScrollDemo } from './components/HeroScrollDemo'; // ← Keep this import
 
 const queryClient = new QueryClient();
