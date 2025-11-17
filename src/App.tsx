@@ -26,8 +26,9 @@ import AdminModeration from "./lib/pages/admin/moderation";
 import AdminSettings from "./lib/pages/admin/settings";
 import NotFound from "./lib/pages/NotFound";
 import Blogs from "./lib/pages/Blogs";
+import about from "./components/layout/about";
+import FAQ from "./components/layout/faq";
 import { HeroScrollDemo } from './components/HeroScrollDemo'; // ← Keep this import
-
 
 const queryClient = new QueryClient();
 
