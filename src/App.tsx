@@ -33,8 +33,8 @@ import { HeroScrollDemo } from './components/HeroScrollDemo';
 
 // Footer Pages
 import Help from "./lib/pages/help";
-import Contact from "./lib/pages/contact";
-import FAQ from "./lib/pages/faq";
+import Contact from "./lib/pages/Contact";
+import FAQ from "./lib/pages/FAQ";
 import Feedback from "./lib/pages/feedback";
 import Privacy from "./lib/pages/privacy";
 import Terms from "./lib/pages/terms";
