@@ -9,10 +9,8 @@ import { Footer } from "./components/layout/footer";
 import { SignIn, SignUp, useUser } from "@clerk/clerk-react";
 import { RoleSelection } from './components/auth/RoleSelection';
 import { RoleProtectedRoute } from './components/auth/RoleProtectedRoute';
-// import SetupAdmin from "../src/lib/pages/admin/";
 
-
-// Pages
+// Main Pages
 import Landing from "./lib/pages/landing";
 import Discover from "./lib/pages/discover";
 import EventDetail from "./lib/pages/event-detail";
@@ -31,8 +29,16 @@ import AdminModeration from "./lib/pages/admin/moderation";
 import AdminSettings from "./lib/pages/admin/settings";
 import NotFound from "./lib/pages/NotFound";
 import Blogs from "./lib/pages/Blogs";
-import { HeroScrollDemo } from './components/HeroScrollDemo'; // ← Keep this import
+import { HeroScrollDemo } from './components/HeroScrollDemo';
 
+// Footer Pages
+import Help from "./lib/pages/help";
+import Contact from "./lib/pages/contact";
+import FAQ from "./lib/pages/faq";
+import Feedback from "./lib/pages/feedback";
+import Privacy from "./lib/pages/privacy";
+import Terms from "./lib/pages/terms";
+import About from "./lib/pages/about";
 
 const queryClient = new QueryClient();
 
@@ -191,9 +197,6 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
-
-            {/* Setup Admin (One-time use) */}
-            {/* <Route path="/setup-admin" element={<SetupAdmin />} /> */}
 
             {/* Unauthorized Page */}
             <Route 
@@ -369,7 +372,7 @@ const App = () => (
               } 
             />
 
-            {/* Footer Pages - Public */}
+            {/* Footer Pages - Public (no auth required) */}
             <Route path="/help" element={<DashboardLayout><Help /></DashboardLayout>} />
             <Route path="/contact" element={<DashboardLayout><Contact /></DashboardLayout>} />
             <Route path="/faq" element={<DashboardLayout><FAQ /></DashboardLayout>} />
