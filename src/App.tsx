@@ -9,6 +9,8 @@ import { Footer } from "./components/layout/footer";
 import { SignIn, SignUp, useUser } from "@clerk/clerk-react";
 import { RoleSelection } from './components/auth/RoleSelection';
 import { RoleProtectedRoute } from './components/auth/RoleProtectedRoute';
+// import SetupAdmin from "../src/lib/pages/admin/";
+
 
 // Pages
 import Landing from "./lib/pages/landing";
@@ -191,7 +193,7 @@ const App = () => (
             />
 
             {/* Setup Admin (One-time use) */}
-            <Route path="/setup-admin" element={<SetupAdmin />} />
+            {/* <Route path="/setup-admin" element={<SetupAdmin />} /> */}
 
             {/* Unauthorized Page */}
             <Route 
