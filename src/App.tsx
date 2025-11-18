@@ -29,17 +29,8 @@ import AdminModeration from "./lib/pages/admin/moderation";
 import AdminSettings from "./lib/pages/admin/settings";
 import NotFound from "./lib/pages/NotFound";
 import Blogs from "./lib/pages/Blogs";
-import SetupAdmin from "./lib/pages/setup-admin";
-import { HeroScrollDemo } from './components/HeroScrollDemo';
+import { HeroScrollDemo } from './components/HeroScrollDemo'; // ← Keep this import
 
-// Footer pages
-import Help from "./lib/pages/help";
-import Contact from "./lib/pages/Contact";
-import FAQ from "./lib/pages/FAQ";
-import Feedback from "./lib/pages/feedback";
-import Privacy from "./lib/pages/privacy";
-import Terms from "./lib/pages/terms";
-import About from "./lib/pages/about";
 
 const queryClient = new QueryClient();
 
