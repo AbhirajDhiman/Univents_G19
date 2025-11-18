@@ -5,7 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "./components/layout/footer";
 import { SignIn, SignUp, useUser } from "@clerk/clerk-react";
+import { RoleSelection } from './components/auth/RoleSelection';
+import { RoleProtectedRoute } from './components/auth/RoleProtectedRoute';
 
 // Pages
 import Landing from "./lib/pages/landing";
@@ -26,22 +29,32 @@ import AdminModeration from "./lib/pages/admin/moderation";
 import AdminSettings from "./lib/pages/admin/settings";
 import NotFound from "./lib/pages/NotFound";
 import Blogs from "./lib/pages/Blogs";
-import { HeroScrollDemo } from './components/HeroScrollDemo'; // ← Keep this import
+import SetupAdmin from "./lib/pages/setup-admin";
+import { HeroScrollDemo } from './components/HeroScrollDemo';
 
+// Footer pages
+import Help from "./lib/pages/help";
+import Contact from "./lib/pages/Contact";
+import FAQ from "./lib/pages/FAQ";
+import Feedback from "./lib/pages/feedback";
+import Privacy from "./lib/pages/privacy";
+import Terms from "./lib/pages/terms";
+import About from "./lib/pages/about";
 
 const queryClient = new QueryClient();
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-background flex flex-col">
     <Navbar />
-    <main className="container mx-auto px-4 py-6">
+    <main className="container mx-auto px-4 py-6 flex-grow">
       {children}
     </main>
+    <Footer />
   </div>
 );
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isSignedIn, isLoaded } = useUser();
+  const { isSignedIn, isLoaded, user } = useUser();
 
   if (!isLoaded) {
     return (
@@ -56,6 +69,12 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
   if (!isSignedIn) {
     return <Navigate to="/login" replace />;
+  }
+
+  // Check if user has selected a role
+  const hasRole = user?.unsafeMetadata?.role;
+  if (!hasRole && window.location.pathname !== '/select-role') {
+    return <Navigate to="/select-role" replace />;
   }
 
   return <>{children}</>;
@@ -90,10 +109,10 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* Public Landing Page - Now with HeroScrollDemo */}
+            {/* Public Landing Page */}
             <Route path="/" element={<Landing />} />
             
-            {/* NEW: Demo route to see the scroll animation */}
+            {/* Demo route */}
             <Route 
               path="/demo" 
               element={
@@ -103,7 +122,7 @@ const App = () => (
               } 
             />
             
-            {/* Auth Routes - Clerk Components with Google OAuth only */}
+            {/* Auth Routes */}
             <Route 
               path="/login" 
               element={
@@ -112,7 +131,7 @@ const App = () => (
                     <div className="w-full max-w-md p-8">
                       <SignIn 
                         signUpUrl="/signup"
-                        forceRedirectUrl="/discover"
+                        afterSignInUrl="/select-role"
                         appearance={{
                           elements: {
                             rootBox: "mx-auto",
@@ -145,7 +164,7 @@ const App = () => (
                     <div className="w-full max-w-md p-8">
                       <SignUp 
                         signInUrl="/login"
-                        forceRedirectUrl="/discover"
+                        afterSignUpUrl="/select-role"
                         appearance={{
                           elements: {
                             rootBox: "mx-auto",
@@ -169,8 +188,34 @@ const App = () => (
                 </PublicRoute>
               } 
             />
+
+            {/* Role Selection */}
+            <Route 
+              path="/select-role" 
+              element={
+                <ProtectedRoute>
+                  <RoleSelection />
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* Setup Admin (One-time use) */}
+            <Route path="/setup-admin" element={<SetupAdmin />} />
+
+            {/* Unauthorized Page */}
+            <Route 
+              path="/unauthorized" 
+              element={
+                <div className="min-h-screen flex items-center justify-center">
+                  <div className="text-center">
+                    <h1 className="text-4xl font-bold mb-4">Access Denied</h1>
+                    <p className="text-muted-foreground">You don't have permission to access this page.</p>
+                  </div>
+                </div>
+              } 
+            />
             
-            {/* Protected Routes */}
+            {/* Protected Routes - Main App */}
             <Route 
               path="/discover" 
               element={
@@ -179,15 +224,12 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
-            
-            {/* Public Blog Page */}
+
             <Route 
               path="/blogs" 
               element={
                 <ProtectedRoute>
-                  <DashboardLayout>
-                    <Blogs />
-                  </DashboardLayout>
+                  <DashboardLayout><Blogs /></DashboardLayout>
                 </ProtectedRoute>
               } 
             />
@@ -197,24 +239,6 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <DashboardLayout><EventDetail /></DashboardLayout>
-                </ProtectedRoute>
-              } 
-            />
-            
-            <Route 
-              path="/create-event" 
-              element={
-                <ProtectedRoute>
-                  <DashboardLayout><CreateEvent /></DashboardLayout>
-                </ProtectedRoute>
-              } 
-            />
-            
-            <Route 
-              path="/manage-events" 
-              element={
-                <ProtectedRoute>
-                  <DashboardLayout><ManageEvents /></DashboardLayout>
                 </ProtectedRoute>
               } 
             />
@@ -272,30 +296,60 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
-            
+
+            {/* Organizer Routes */}
+            <Route 
+              path="/create-event" 
+              element={
+                <ProtectedRoute>
+                  <RoleProtectedRoute allowedRoles={['organizer', 'admin']}>
+                    <DashboardLayout><CreateEvent /></DashboardLayout>
+                  </RoleProtectedRoute>
+                </ProtectedRoute>
+              } 
+            />
+
+            <Route 
+              path="/manage-events" 
+              element={
+                <ProtectedRoute>
+                  <RoleProtectedRoute allowedRoles={['organizer', 'admin']}>
+                    <DashboardLayout><ManageEvents /></DashboardLayout>
+                  </RoleProtectedRoute>
+                </ProtectedRoute>
+              } 
+            />
+
             <Route 
               path="/dashboard/organizer" 
               element={
                 <ProtectedRoute>
-                  <DashboardLayout><OrganizerDashboard /></DashboardLayout>
+                  <RoleProtectedRoute allowedRoles={['organizer', 'admin']}>
+                    <DashboardLayout><OrganizerDashboard /></DashboardLayout>
+                  </RoleProtectedRoute>
                 </ProtectedRoute>
               } 
             />
-            
+
+            {/* Admin Routes */}
             <Route 
               path="/dashboard/admin" 
               element={
                 <ProtectedRoute>
-                  <DashboardLayout><AdminDashboard /></DashboardLayout>
+                  <RoleProtectedRoute allowedRoles={['admin']}>
+                    <DashboardLayout><AdminDashboard /></DashboardLayout>
+                  </RoleProtectedRoute>
                 </ProtectedRoute>
               } 
             />
-            
+
             <Route 
               path="/admin/users" 
               element={
                 <ProtectedRoute>
-                  <DashboardLayout><AdminUsers /></DashboardLayout>
+                  <RoleProtectedRoute allowedRoles={['admin']}>
+                    <DashboardLayout><AdminUsers /></DashboardLayout>
+                  </RoleProtectedRoute>
                 </ProtectedRoute>
               } 
             />
@@ -304,7 +358,9 @@ const App = () => (
               path="/admin/moderation" 
               element={
                 <ProtectedRoute>
-                  <DashboardLayout><AdminModeration /></DashboardLayout>
+                  <RoleProtectedRoute allowedRoles={['admin']}>
+                    <DashboardLayout><AdminModeration /></DashboardLayout>
+                  </RoleProtectedRoute>
                 </ProtectedRoute>
               } 
             />
@@ -313,11 +369,23 @@ const App = () => (
               path="/admin/settings" 
               element={
                 <ProtectedRoute>
-                  <DashboardLayout><AdminSettings /></DashboardLayout>
+                  <RoleProtectedRoute allowedRoles={['admin']}>
+                    <DashboardLayout><AdminSettings /></DashboardLayout>
+                  </RoleProtectedRoute>
                 </ProtectedRoute>
               } 
             />
+
+            {/* Footer Pages - Public */}
+            <Route path="/help" element={<DashboardLayout><Help /></DashboardLayout>} />
+            <Route path="/contact" element={<DashboardLayout><Contact /></DashboardLayout>} />
+            <Route path="/faq" element={<DashboardLayout><FAQ /></DashboardLayout>} />
+            <Route path="/feedback" element={<DashboardLayout><Feedback /></DashboardLayout>} />
+            <Route path="/privacy" element={<DashboardLayout><Privacy /></DashboardLayout>} />
+            <Route path="/terms" element={<DashboardLayout><Terms /></DashboardLayout>} />
+            <Route path="/about" element={<DashboardLayout><About /></DashboardLayout>} />
             
+            {/* 404 Not Found */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

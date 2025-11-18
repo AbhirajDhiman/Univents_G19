@@ -1,34 +1,21 @@
-// client/src/hooks/useUserRole.ts
 import { useUser } from '@clerk/clerk-react';
-import { useState, useEffect } from 'react';
 
-export type UserRole = 'admin' | 'organizer' | 'participant';
+export type UserRole = 'participant' | 'organizer' | 'admin';
 
 export const useUserRole = () => {
   const { user, isLoaded } = useUser();
-  const [role, setRole] = useState<UserRole>('participant');
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    if (isLoaded && user) {
-      // Get role from Clerk's public metadata
-      // You need to set this in Clerk Dashboard or via API
-      const userRole = user.publicMetadata?.role as UserRole;
-      
-      setRole(userRole || 'participant'); // Default to participant
-      setIsLoading(false);
-    } else if (isLoaded && !user) {
-      setIsLoading(false);
-    }
-  }, [user, isLoaded]);
+  const role = (user?.unsafeMetadata?.role as UserRole) || null;
+  const isAdmin = role === 'admin';
+  const isOrganizer = role === 'organizer' || isAdmin;
+  const isParticipant = role === 'participant';
 
   return {
     role,
-    isLoading,
-    isAdmin: role === 'admin',
-    isOrganizer: role === 'organizer',
-    isParticipant: role === 'participant',
-    canCreateEvents: role === 'admin' || role === 'organizer',
-    canModerate: role === 'admin',
+    isAdmin,
+    isOrganizer,
+    isParticipant,
+    hasRole: !!role,
+    isLoaded,
   };
 };

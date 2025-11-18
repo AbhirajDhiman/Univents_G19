@@ -1,11 +1,18 @@
+// FILE: src/components/layout/navbar.tsx
+
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { UserButton, useUser } from '@clerk/clerk-react';
 import { Bell, Plus } from 'lucide-react';
+import { useUserRole } from '@/hooks/useUserRole';
 
 export const Navbar = () => {
   const navigate = useNavigate();
   const { isSignedIn } = useUser();
+  const { isOrganizer, isAdmin } = useUserRole();
+
+  // Check if user can create events (organizer or admin)
+  const canCreateEvents = isOrganizer || isAdmin;
 
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -21,56 +28,67 @@ export const Navbar = () => {
             </span>
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link 
-              to="/discover" 
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Discover
-            </Link>
-            <Link 
-              to="/my-events" 
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              My Events
-            </Link>
-            <Link 
-              to="/manage-events" 
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Manage
-            </Link>
-          </div>
+          {/* Navigation Links - Only show when signed in */}
+          {isSignedIn && (
+            <div className="hidden md:flex items-center space-x-6">
+              <Link 
+                to="/discover" 
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Discover
+              </Link>
+              <Link 
+                to="/my-events" 
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                My Events
+              </Link>
+              
+              {/* Show "Manage" link only for organizers/admins */}
+              {canCreateEvents && (
+                <Link 
+                  to="/manage-events" 
+                  className="text-sm font-medium transition-colors hover:text-primary"
+                >
+                  Manage
+                </Link>
+              )}
+            </div>
+          )}
 
-          {/* Action Buttons */}
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => navigate('/create-event')}
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Create Event
-            </Button>
+          {/* Action Buttons - Only show when signed in */}
+          {isSignedIn && (
+            <div className="flex items-center space-x-4">
+              {/* Create Event Button - Only for organizers/admins */}
+              {canCreateEvents && (
+                <Button
+                  variant="default"
+                  size="sm"
+                  onClick={() => navigate('/create-event')}
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  Create Event
+                </Button>
+              )}
 
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => navigate('/notifications')}
-            >
-              <Bell className="h-5 w-5" />
-            </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => navigate('/notifications')}
+              >
+                <Bell className="h-5 w-5" />
+              </Button>
 
-            <UserButton 
-              afterSignOutUrl="/"
-              appearance={{
-                elements: {
-                  avatarBox: "h-9 w-9"
-                }
-              }}
-            />
-          </div>
+              <UserButton 
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: "h-9 w-9"
+                  }
+                }}
+              />
+            </div>
+          )}
         </div>
       </div>
     </nav>
